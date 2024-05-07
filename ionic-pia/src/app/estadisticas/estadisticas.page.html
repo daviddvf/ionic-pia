@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>estadisticas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">estadisticas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button color="medium" (click) = "navhome()">
+    <ion-icon slot="icon-only" name="caret-back-outline"></ion-icon>
+  </ion-button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>Fecha</ion-col>
+      <ion-col>Puntuacion</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngFor = "let info of infoArray">
+    <ion-item-divider>
+    <ion-grid>
+      
+      <ion-row>
+        <ion-col> {{info.date}}</ion-col>
+        <ion-col> {{info.puntuacion}}</ion-col>
+      </ion-row>
+    
+    </ion-grid>
+  </ion-item-divider>
+
+  </div>
+  
+</ion-content>

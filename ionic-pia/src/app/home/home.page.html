@@ -1,0 +1,51 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">This is the menu content.</ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content>
+    
+    <div class = "bttns">
+    
+    <ion-toolbar>
+      
+        <ion-button color ="medium" expand="block" (click) = "navstart()"> Iniciar Partida </ion-button>
+      
+    </ion-toolbar>
+  
+    
+    <ion-toolbar>
+      
+        <ion-button color ="medium" expand="block" (click) = "navEstadisticas()"> Estadisticas </ion-button>
+      
+    </ion-toolbar>
+ 
+   
+    <ion-toolbar >
+  
+        <ion-button  color ="medium" expand="block" (click) = "logout()" > Cerrar Sesion </ion-button>
+  
+    </ion-toolbar>
+
+  </div>
+
+  
+  </ion-content>
+
+</div>

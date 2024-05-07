@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>start</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">start</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-title>En Construccion</ion-title>
+
+  <ion-button color="medium" (click) = "navHome()">
+    <ion-icon slot="start" name="caret-back-outline"></ion-icon>
+    regresar
+  </ion-button>
+
+  <ion-button color="medium" (click) = "generarPuntuacion()">Generar puntuacion</ion-button>
+  <ion-title>Puntuacion: {{puntuacion}}</ion-title>
+
+</ion-content>
