@@ -4,22 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { StartPageRoutingModule } from './start-routing.module';
+import { CpuPlayerPageRoutingModule } from './cpu-player-routing.module';
 
-import { StartPage } from './start.page';
-
-import { CartaPage } from './carta/carta.page';
+import { CpuPlayerPage } from './cpu-player.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StartPageRoutingModule,
-    
-    
-   
+    CpuPlayerPageRoutingModule
   ],
-  declarations: [StartPage, CartaPage]
+  declarations: [CpuPlayerPage]
 })
-export class StartPageModule {}
+export class CpuPlayerPageModule {}

@@ -8,15 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuardService {
 
-  public isLoggedIn: boolean = false;
   currentuser: any;
 
   constructor(
     private auth: AutenticacionFirebaseService,
     private router: Router
-    ){
-      
-  }
+    ) { }
   
   async canActivate(
     route: ActivatedRouteSnapshot,

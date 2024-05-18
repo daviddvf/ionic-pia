@@ -45,26 +45,23 @@ export class AutenticacionFirebaseService {
         
       }
     });
-
-    
-
   }
 
-  getStateAuth(){
+  getStateAuth() {
     return this.auth;
    }
      
-  onLogin(user: Usuario): Promise<any>{
+  onLogin(user: Usuario): Promise<any> {
       return setPersistence(this.auth, browserLocalPersistence).then(() => 
         signInWithEmailAndPassword(this.auth, user.email, user.password)).catch(err => console.log(err))
       
   }
    
-   onRegister(user: Usuario): Promise<any>{
+   onRegister(user: Usuario): Promise<any> {
       return  createUserWithEmailAndPassword(this.auth, user.email, user.password);
   }
   
-  onlogout(){
+  onlogout() {
     signOut(this.auth).then(() => {
       console.log('se ha cerrado la sesion correctamente');
     }).catch((error) => {
@@ -74,7 +71,6 @@ export class AutenticacionFirebaseService {
 
   async altaPuntuacion(pts: number){
     
-    
       const docRef = await addDoc(collection(this.db, this.user.email + "-Data"), {
         date: this.getDate(),
         puntuacion: pts
@@ -83,7 +79,7 @@ export class AutenticacionFirebaseService {
       console.log();
   
   }
-  getDate(){
+  getDate() {
     const currentDate: Date = new Date();
 
     const year: number = currentDate.getFullYear();
@@ -94,16 +90,16 @@ export class AutenticacionFirebaseService {
 
   }
 
-  async bajaPuntuacion(){
-    const query = await getDocs(collection(this.db, this.user.email + "-Data"));
+  async bajaPuntuacion(email: any) {
+    const query = await getDocs(collection(this.db, email + "-Data"));
+    this.docsArray.splice(0, this.docsArray.length);
     query.forEach((doc) => {
       this.docsArray.push(doc.data());
       console.log(doc.data());
     })
   }
 
-  getDocs()
-  {
+  getDocs() {
     return this.docsArray;
   }
  

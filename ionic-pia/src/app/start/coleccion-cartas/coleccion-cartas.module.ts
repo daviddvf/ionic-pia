@@ -4,22 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { StartPageRoutingModule } from './start-routing.module';
+import { ColeccionCartasPageRoutingModule } from './coleccion-cartas-routing.module';
 
-import { StartPage } from './start.page';
-
-import { CartaPage } from './carta/carta.page';
+import { ColeccionCartasPage } from './coleccion-cartas.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StartPageRoutingModule,
-    
-    
-   
+    ColeccionCartasPageRoutingModule
   ],
-  declarations: [StartPage, CartaPage]
+  declarations: [ColeccionCartasPage]
 })
-export class StartPageModule {}
+export class ColeccionCartasPageModule {}

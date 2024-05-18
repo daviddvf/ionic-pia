@@ -15,7 +15,7 @@ const routes: Routes = [
     component: StartPage
   },
   {
-    path: 'estadisticas',
+    path: 'estadisticas/:email',
     component: EstadisticasPage
   }
 ];

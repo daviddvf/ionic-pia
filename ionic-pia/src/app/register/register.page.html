@@ -28,7 +28,7 @@
         <ion-input type="password" formControlName="password"></ion-input>
         <ion-text color="danger" *ngIf="!formRegister.valid && formRegister.controls['password'].touched && !hasError('password','required')">
             <h5>
-                Maximo 6 caracteres
+                Maximo 10 caracteres
             </h5>
         </ion-text>
         <ion-text color="danger" *ngIf="hasError('password','required')">
@@ -38,7 +38,7 @@
         </ion-text>
     </ion-item>
     <ion-item-divider>
-        <ion-button size="larger" [disabled]="!formRegister.valid" type="submit">Registrar</ion-button>
+        <ion-button shape = "round" color = "medium" size="larger" [disabled]="!formRegister.valid" type="submit">Registrar</ion-button>
         
     </ion-item-divider>
 </form>

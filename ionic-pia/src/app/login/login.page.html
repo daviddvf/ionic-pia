@@ -9,35 +9,36 @@
       </ion-toolbar>
   <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
     <ion-item>
-       
         <ion-input class = "input" placeholder="Enter email" label = "Email"  fill="solid"  type="text" labelPlacement="floating" formControlName="email">
             <ion-icon size = "large" slot = "start" aria-hidden="true" name="person-circle-outline"></ion-icon>
-
         </ion-input>
+
         <ion-text color="danger" *ngIf="hasError('email','email')">
             <h5>
                 Correo invalido
             </h5>
         </ion-text>
+
         <ion-text color="danger" *ngIf="hasError('email','required')">
             <h5>Campo requerido</h5>
         </ion-text>
     </ion-item>
+
     <ion-item>
         
         <ion-input class = "input" placeholder="Enter Password" label = "Password" fill="solid" labelPlacement="floating" type="password" formControlName="password">
             <ion-icon size = "large" slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-
             <ion-button fill="clear" slot="end" aria-label="Show/hide">
                 <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
               </ion-button>
-
         </ion-input>
+
         <ion-text color="danger" *ngIf="!ionicForm.valid && ionicForm.controls['password'].touched && !hasError('password','required')">
             <h5>
-                Maximo 6 caracteres
+                Maximo 10 caracteres
             </h5>
         </ion-text>
+
         <ion-text color="danger" *ngIf="hasError('password','required')">
             <h5>
                 Campo requerido
@@ -47,13 +48,10 @@
     <div class="bttns">
     
         <ion-button shape = "round" color = "medium" size="larger" [disabled]="!ionicForm.valid" type="submit">Login</ion-button>
-        
     
-
-     
         <ion-button shape = "round" color = "medium" size="larger" (click)="onRegister()">Register</ion-button>
     
-</div>
+    </div>
 </form>
 </div>
 </ion-content>

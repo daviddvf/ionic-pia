@@ -19,22 +19,20 @@ export class LoginPage implements OnInit {
     private router: Router,
     private autSvc: AutenticacionFirebaseService,
     private formBuilder: FormBuilder,
-    private authGuard: AuthGuardService
-
   ) { }
 
   ngOnInit() {
     this.buildForm();
   }
 
-  buildForm(){
+  buildForm() {
     this.ionicForm = this.formBuilder.group({
       email: new FormControl('',{validators: [Validators.email,Validators.required]}),
-      password: new FormControl('', {validators: [Validators.required, Validators.minLength(6), Validators.maxLength(6)]})
+      password: new FormControl('', {validators: [Validators.required, Validators.minLength(6), Validators.maxLength(10)]})
     });
   } 
 
-  submitForm(){
+  submitForm() {
     if(this.ionicForm.valid){
       this.user.email = this.ionicForm.get('email').value;
       this.user.password = this.ionicForm.get('password').value;
@@ -42,10 +40,11 @@ export class LoginPage implements OnInit {
     }
   } 
 
-  async onLogin(){
-    this.autSvc.onLogin(this.user).then((user:any)=>{
+  async onLogin() {
+
+    this.autSvc.onLogin(this.user).then((user:any)=> {
+
       if(user!=null && user.code ==undefined){
-        
         this.router.navigate(['/home']);
       }
       else{
@@ -55,13 +54,13 @@ export class LoginPage implements OnInit {
           }
         }
       }
-    }).catch((error: any)=>{
+    }).catch((error: any)=> {
       this.openModal(error);
     })
 
   }
   
-  async openModal(user: any){
+  async openModal(user: any) {
     console.error(user);
   }
 

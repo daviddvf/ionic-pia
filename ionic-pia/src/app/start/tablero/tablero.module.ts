@@ -4,22 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { StartPageRoutingModule } from './start-routing.module';
+import { TableroPageRoutingModule } from './tablero-routing.module';
 
-import { StartPage } from './start.page';
-
-import { CartaPage } from './carta/carta.page';
+import { TableroPage } from './tablero.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StartPageRoutingModule,
-    
-    
-   
+    TableroPageRoutingModule
   ],
-  declarations: [StartPage, CartaPage]
+  declarations: [TableroPage]
 })
-export class StartPageModule {}
+export class TableroPageModule {}

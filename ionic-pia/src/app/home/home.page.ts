@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutenticacionFirebaseService } from '../services/autenticacion-firebase.service';
+import { Subscription } from 'rxjs';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,26 +11,40 @@ import { AutenticacionFirebaseService } from '../services/autenticacion-firebase
 })
 export class HomePage {
 
-  
+  user: any;
+  userSubs: Subscription;
 
-  constructor(private router: Router, private auth : AutenticacionFirebaseService) {}
+  email: any;
+
+  constructor (
+    private router: Router,
+    private authSvc : AutenticacionFirebaseService,
+    private navCtrl: NavController
+  ) {  }
+
+  ngOnInit() {
+    this.userSubs = this.authSvc.usuario$.subscribe(user => {
+      this.user = user;
+      this.email = user.email;
+    });
+    console.log(this.user.email)
+  }
   
-  navlogin()
-  {
+  navlogin() {
     this.router.navigate(['/login']);
   }
 
-  navEstadisticas()
-  {
-    this.router.navigate(['home/estadisticas']);
+  navEstadisticas() {
+    this.navCtrl.navigateForward(`home/estadisticas/${this.email}`);
+    //this.router.navigate(['home/estadisticas']);
   }
 
-  navstart(){
+  navstart() {
     this.router.navigate(['home/start']);
   }
 
-  logout(){
-    this.auth.onlogout();
+  logout() {
+    this.authSvc.onlogout();
     this.router.navigate(['/login']);
   }
 }
