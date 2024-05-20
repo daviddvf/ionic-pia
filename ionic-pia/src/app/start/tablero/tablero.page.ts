@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Card } from 'src/app/interfaces/card';
 import { GameService } from 'src/app/services/game.service';
 
@@ -8,17 +8,12 @@ import { GameService } from 'src/app/services/game.service';
   styleUrls: ['./tablero.page.scss'],
 })
 export class TableroPage implements OnInit {
-
-  currentCard: Card = new Card();
-
+  @Input() discardCard: Card;
+  
   constructor(private gameSvc: GameService) { }
 
   ngOnInit() {
-    this.gameSvc.setFirstCard();
-    this.gameSvc.currentCard$.subscribe(card => {
-      this.currentCard = card;
-    })
-    
+   
   }
 
 }

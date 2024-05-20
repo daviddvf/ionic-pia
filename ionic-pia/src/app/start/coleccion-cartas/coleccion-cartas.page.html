@@ -2,8 +2,8 @@
 <ion-content >
   <div class="coleccion">
     <div class="scroll-container">
-      <div *ngFor="let carta of cartas; let cardIndex = index" >
-      <carta  [number]="carta.number" [color]="carta.color" (click) = "playCard(cardIndex)"></carta>
+      <div *ngFor="let carta of cards; let cardIndex = index" >
+      <carta class="carta" [number]="carta.number" [color]="carta.color" (click) = "play(cardIndex)"></carta>
       
     </div>
     </div>

@@ -3,6 +3,7 @@ import { AutenticacionFirebaseService } from '../services/autenticacion-firebase
 import { Router } from '@angular/router';
 import { Card } from '../interfaces/card';
 import { GameService } from '../services/game.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-start',
@@ -13,12 +14,17 @@ export class StartPage implements OnInit {
 
   public puntuacion: number = 0;
 
-  currentCard: Card = new Card();
+  discardCard: Card = new Card();
+  discardCardSubs: Subscription;
 
   playercartas: Array<Card> = new Array();
+  playercartasSubs: Subscription;
 
   cpuPlayernCards: number;
+  cpuplayerNcartasSubs: Subscription;
+
   cpuplayercartas: Array<Card> = new Array();
+  cpuplayercartasSubs: Subscription;
 
   constructor(
     private auth: AutenticacionFirebaseService, 
@@ -27,18 +33,29 @@ export class StartPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.playercartas = this.gameSvc.getCollectionCards(7);
+    this.gameSvc.buildPlayerHand();
+    this.gameSvc.buildCpuPlayerHand();
+    this.gameSvc.setFirstCard();
 
-    this.cpuplayercartas = this.gameSvc.getCollectionCards(7);
-    this.cpuPlayernCards = this. cpuplayercartas.length;
+    this.discardCardSubs = this.gameSvc.currentCard$.subscribe(card => {
+      this.discardCard = card;
+    })
 
-    this.currentCard = this.gameSvc.getRandomCard();
+    this.playercartasSubs = this.gameSvc.playerCards$.subscribe(cards => {
+      this.playercartas = cards;
+    })
+
+    this.cpuplayercartasSubs = this.gameSvc.cpuCards$.subscribe(cards => {
+      this.cpuplayercartas = cards;
+    })
+
+    this.cpuplayerNcartasSubs = this.gameSvc.cpunCards$.subscribe(n => {
+      this.cpuPlayernCards = n;
+    })
+
+
+
   }
-
-  startGameLoop() {
-
-  }
-  
 
   generarPuntuacion(){
     const minValue = 0;

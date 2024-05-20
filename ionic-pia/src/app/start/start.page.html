@@ -5,9 +5,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  <app-cpu-player></app-cpu-player>
-  <app-tablero ></app-tablero>
-  <app-coleccion-cartas></app-coleccion-cartas>
+  <div class="button">
+    <ion-button  size="small">
+      <ion-icon slot="icon-only" name="caret-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+  <app-cpu-player [nCards] = "cpuPlayernCards"></app-cpu-player>
+  <app-tablero [discardCard] = "discardCard" ></app-tablero>
+  <app-coleccion-cartas [cards] = "playercartas"></app-coleccion-cartas>
 
 </ion-content>
